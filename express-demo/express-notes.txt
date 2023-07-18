@@ -1,7 +1,0 @@
-what are middlewares? 
-- middleware are function that access to the request and response object. Express has built in middleware but middleware also comes from 3rd party packages as well as custom middleware.
-
-* Execute any code
-* Make changes to the request/response objects
-* End response cycle
-* Call next middleware in the stack

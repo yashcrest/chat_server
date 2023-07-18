@@ -1,8 +1,9 @@
 const express = require('express');
-const {engine} = require('express-handlebars');
+const { engine } = require('express-handlebars');
 const { prototype } = require('events');
 const path = require('path');
 const logger = require('./middleware/logger');
+const members = require('./Members')
 
 //init express
 const app = express();
@@ -12,7 +13,7 @@ const PORT = process.env.PORT || 3001;
 //Handlebars middleware
 app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');
-app.set('views', './views')
+app.set('views', path.join(__dirname, 'views'));
 
 //Init middleware
 // app.use(logger);
@@ -24,7 +25,10 @@ app.use(express.urlencoded({extended : false}));
 
 //Homepage route
 app.get('/', (req, res) => {
-    res.render('index')
+    res.render('index', {
+        title: 'Member App',
+        members
+    })
 })
 
 //Create your endpoints/route handlers
