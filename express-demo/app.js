@@ -6,7 +6,7 @@ const logger = require('./middleware/logger');
 
 //init express
 const app = express();
-//decalare a port
+//decalare a port where server will run
 const PORT = process.env.PORT || 3001;
 
 //Handlebars middleware
@@ -34,7 +34,7 @@ app.get('/', (req, res) => {
 //loading file this way is not ideal as  your have to maually route the files i.e. if you have an about page or contact page you have to write logic for them
 
 
-//Set static folder
+//Set static folder --> now the public folder will server static files. 
 app.use(express.static(path.join(__dirname, 'public')));
 
 
