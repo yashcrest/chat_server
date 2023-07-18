@@ -1,17 +1,18 @@
 const express = require('express');
+const {engine} = require('express-handlebars');
 const { prototype } = require('events');
-const exphbs = require('express-handlebars')
 const path = require('path');
 const logger = require('./middleware/logger');
 
 //init express
 const app = express();
 //decalare a port
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 //Handlebars middleware
-app.engine('handlebars', exphbs());
+app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');
+app.set('views', './views')
 
 //Init middleware
 // app.use(logger);
@@ -19,6 +20,7 @@ app.set('view engine', 'handlebars');
 //Body parser middleware
 app.use(express.json());
 app.use(express.urlencoded({extended : false}));
+
 
 //Homepage route
 app.get('/', (req, res) => {
